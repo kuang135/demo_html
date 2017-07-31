@@ -1,0 +1,66 @@
+@keyframes -- 创建动画规则
+	用百分比来规定变化发生的时间，或用关键词 "from" 和 "to"，等同于 0% 和 100%
+
+animation -- 所有动画属性的简写属性，除了 animation-play-state 属性
+animation-name -- 规定 @keyframes 动画的名称
+animation-duration -- 规定动画完成一个周期所花费的秒或毫秒，默认是0
+animation-timing-function -- 规定动画的速度曲线，默认是 "ease"
+	linear	动画从头到尾的速度是相同的
+	ease	默认。动画以低速开始，然后加快，在结束前变慢
+	ease-in	动画以低速开始
+	ease-out	动画以低速结束
+	ease-in-out	动画以低速开始和结束
+	cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值。
+animation-delay	-- 规定动画何时开始。默认是 0
+animation-iteration-count -- 规定动画被播放的次数，默认是1
+	n -- 一个数字，定义应该播放多少次动画
+	infinite -- 指定动画应该播放无限次（永远）
+animation-direction -- 规定动画是否在下一周期逆向地播放。默认是 "normal"
+	normal	默认值
+	reverse	动画反向播放
+	alternate	动画在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放
+	alternate-reverse	动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放
+	initial	设置该属性为它的默认值
+	inherit	从父元素继承该属性
+animation-fill-mode -- 规定动画在播放之前或之后，其动画效果是否可见
+	none	不改变默认行为。
+	forwards	当动画完成后，保持最后一个属性值（在最后一个关键帧中定义）。
+	backwards	在 animation-delay 所指定的一段时间内，在动画显示之前，应用开始属性值（在第一个关键帧中定义）。
+	both	向前和向后填充模式都被应用。
+animation-play-state -- 规定动画是否正在运行或暂停，默认是 "running"
+	paused	指定暂停动画
+	running	指定正在运行的动画
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @keyframes myfirst {
+            0%   {background: red; left:0; top:0;}
+            25%  {background: yellow; left:200px; top:0;}
+            50%  {background: blue; left:200px; top:200px;}
+            75%  {background: green; left:0; top:200px;}
+            100% {background: red; left:0; top:0;}
+        }
+        .animation {
+            width:100px;
+            height:100px;
+            background:red;
+            position: relative;
+            animation-name:myfirst;
+            animation-duration:5s;
+            animation-timing-function:linear;
+            animation-delay:2s;
+            animation-iteration-count:infinite;
+            animation-direction:alternate;
+            animation-play-state:running;
+        }
+    </style>
+</head>
+<body>
+<div class="animation"></div>
+<div>当上面的div动画变化时，下面的div会怎么样</div>
+</body>
+</html>

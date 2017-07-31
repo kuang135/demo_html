@@ -1,0 +1,17 @@
+placeholder
+	ie9及一下不支持
+	用js解决
+
+border-radius
+	ie8不支持
+	用背景图片解决
+
+opacity
+	ie8不支持
+	解决:
+		filter:alpha(opacity=60);
+		opacity: 0.6;
+
+websocket
+	ie9及一下不支持
+	用轮询解决
