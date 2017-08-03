@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过定位解决图片鼠标移上去后显示XX</title>
+    <style>
+        .imgs-div {
+            font-size: 0;
+            border: 1px solid cadetblue;
+        }
+        .img-div {
+            position: relative; /*relative - 相对定位，相对于其正常位置定位*/
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 0;
+            border: 1px solid black;
+        }
+        .img {
+            width: 110px;
+            height: 100px;
+        }
+        .img-div:hover .img-xx{
+            display:block;
+        }
+        .img-xx {
+            position: absolute; /*绝对定位，相对于static定位以外的第一个父元素定位(上面的relative)*/
+            top: 0;
+            right: 0;
+            display:none;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            background: url("img/hover_xx.png");
+        }
+    </style>
+</head>
+<body>
+    <div class="imgs-div">
+        <div class="img-div">
+            <img class="img" src="img/hover_background.png"/>
+            <i class="img-xx"></i>
+        </div>
+        <div  class="img-div">
+            <img class="img" src="img/hover_background.png"/>
+            <i class="img-xx"></i>
+        </div>
+        <div  class="img-div">
+            <img class="img" src="img/hover_background.png"/>
+            <i class="img-xx"></i>
+        </div>
+        <div  class="img-div">
+            <img class="img" src="img/hover_background.png"/>
+            <i class="img-xx"></i>
+        </div>
+        <div  class="img-div">
+            <img class="img" src="img/hover_background.png"/>
+            <i class="img-xx"></i>
+        </div>
+    </div>
+</body>
+</html>
