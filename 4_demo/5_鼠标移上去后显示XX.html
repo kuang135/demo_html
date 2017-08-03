@@ -33,6 +33,17 @@
             background: url("img/5_xx.png");
         }
     </style>
+    <script>
+        window.onload = function () {
+            var eles = document.getElementsByClassName('img-xx');
+            for (var i = 0; i < eles.length; i++) {
+                eles[i].addEventListener('click', function () {
+                    this.parentNode.parentNode.removeChild(this.parentNode);
+                });
+
+            }
+        };
+    </script>
 </head>
 <body>
     <div class="imgs-div">
