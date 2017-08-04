@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>position布局</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        html{height: 100%;}
+        body{position: relative;height: 100%;}
+        .top {height: 60px;background-color: #4ec08f;}
+        .left{
+            position: absolute;
+            left: 0;
+            top: 60px;
+            bottom: 0;
+            width: 300px;
+            min-height: 300px;
+            background-color: yellow;
+            overflow-y: auto;
+        }
+        .right{
+            position: absolute;
+            top: 60px;
+            bottom: 0;
+            right: 0;
+            left: 300px;
+            min-width: 900px;
+            min-height: 300px;
+        }
+        .right-list{
+            width: 400px;
+            height: 100%;
+            float: right;
+            background-color: chartreuse;
+            overflow-y: auto;
+        }
+        .center{
+            position: absolute;
+            top:0;
+            left:0;
+            right: 400px;
+            float: right;
+            height: 100%;
+            background-color: bisque;
+        }
+        .center-top{
+            position: absolute;
+            top: 0;
+            height: 50px;
+            width: 100%;
+            background-color: cornflowerblue;
+        }
+        .center-bottom{
+            position: absolute;
+            bottom: 0;
+            height: 250px;
+            width: 100%;
+            background-color: #37393d;
+        }
+        .center-middle{
+            position: absolute;
+            top: 50px;
+            bottom: 250px;
+            width: 100%;
+            background-color: darkorange;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="top"></div>
+<div class="left" >
+    <div style="height: 1500px;"></div>
+</div>
+<div class="right">
+    <div class="right-list">
+        <div style="height: 1500px;"></div>
+    </div>
+    <div class="center">
+        <div class="center-top"></div>
+        <div class="center-middle">
+            <div style="height: 1000px;"></div>
+        </div>
+        <div class="center-bottom"></div>
+    </div>
+</div>
+</body>
+</html>
