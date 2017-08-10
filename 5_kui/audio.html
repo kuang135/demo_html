@@ -59,7 +59,7 @@
                 seconds = '0' + seconds;
             }
             var allTime = minutes + ':' + seconds;
-            document.querySelector('#duration').innerHTML = allTime;
+            document.querySelector('#duration').innerText = allTime;
         };
 		var playAudio = function (event) {
             var target =(event.target)
@@ -83,7 +83,7 @@
                         seconds = '0' + seconds;
                     }
                     var allTime = minutes + ':' + seconds;
-                     document.querySelector('#current').innerHTML = allTime;
+                     document.querySelector('#current').innerText = allTime;
                     if (audio.ended) {
                         addClass(target, 'k-audio-pause');
                         removeClass(target, 'k-audio-play');
