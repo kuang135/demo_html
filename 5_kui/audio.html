@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1 user-scalable=0"/>
+    <title>html5 audio音频播放</title>
+    <style>
+		.k-audio {display: inline-block;}
+		.k-audio .k-audio-img {display: inline-block; width: 50px; height: 54px; background-color: #c7cbd3; cursor: pointer;}
+		.k-audio .k-audio-pause {width: 50px; height: 54px; background: url("img/audio.png") no-repeat center;}
+		.k-audio .k-audio-play {width: 50px; height: 54px; background: url("img/audio.gif") no-repeat center;}
+		.k-audio .k-audio-rolling {position: relative; display: inline-block; width: 120px; height: 4px; vertical-align: 24px; background-color: #c7cbd3;}
+		.k-audio .k-audio-rolling-play {position: absolute; height: 4px; background-color: #2390e2;}
+		.k-audio .k-audio-rolling-name {position: absolute; top: -25px;}
+		.k-audio .k-audio-rolling-current {position: absolute; top: 3px;}
+		.k-audio .k-audio-rolling-duration {position: absolute; top: 3px; right: 0;}
+    </style>
+</head>
+<body style="text-align: center;">
+	<div class="k-audio">
+		<div class="k-audio-img">
+			<div class="k-audio-pause" onclick="playAudio(event)"></div>
+			<audio id="audio" style="display: none;" src="img/audio.mp3" ondurationchange="durationChange(event)"></audio>
+		</div>
+		<div class="k-audio-rolling">
+			<div class="k-audio-rolling-play" id="play"></div>
+			<div class="k-audio-rolling-name">song.mp3</div>
+			<div class="k-audio-rolling-current" id="current">0</div>
+			<div class="k-audio-rolling-duration" id="duration"></div>
+		</div>
+	</div>
+	<script>
+        function hasClass(ele,cls) {
+            return ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+        }
+        function addClass(ele,cls) {
+            if (!this.hasClass(ele,cls)) ele.className += " "+cls;
+        }
+        function removeClass(ele,cls) {
+            if (hasClass(ele,cls)) {
+                var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+                ele.className = ele.className.replace(reg,' ');
+            }
+        }
+
+		var durationChange = function (event) {
+            var audio = event.target;
+            var time = audio.duration;
+            var minute = time / 60;
+            //分
+            var minutes = parseInt(minute);
+            if (minutes < 10) {
+                minutes = '0' + minutes;
+            }
+            //秒
+            var second = time % 60;
+            var seconds = parseInt(second);
+            if (seconds < 10) {
+                seconds = '0' + seconds;
+            }
+            var allTime = minutes + ':' + seconds;
+            document.querySelector('#duration').innerHTML = allTime;
+        };
+		var playAudio = function (event) {
+            var target =(event.target)
+                ,audio = document.querySelector('#audio');
+            if (hasClass(target, 'k-audio-pause'))  {
+                addClass(target, 'k-audio-play');
+                removeClass(target, 'k-audio-pause');
+                audio.play();
+                var timer = setInterval(function(){
+                    var width = audio.currentTime/audio.duration;
+                    document.querySelector('#play').style.width = width * 100 + '%';
+                    var currentTime = audio.currentTime;
+                    var minute = currentTime / 60;
+                    var minutes = parseInt(minute);
+                    if (minutes < 10) {
+                        minutes = '0' + minutes;
+                    }
+                    var second = currentTime % 60;
+                    var seconds = parseInt(second);
+                    if (seconds < 10) {
+                        seconds = '0' + seconds;
+                    }
+                    var allTime = minutes + ':' + seconds;
+                     document.querySelector('#current').innerHTML = allTime;
+                    if (audio.ended) {
+                        addClass(target, 'k-audio-pause');
+                        removeClass(target, 'k-audio-play');
+                        clearInterval(timer);
+                    }
+                }, 2);
+            } else if (hasClass(target, 'k-audio-play')) {
+                addClass(target, 'k-audio-pause');
+                removeClass(target, 'k-audio-play');
+                audio.pause();
+            }
+        }
+	</script>
+</body>
+</html>
