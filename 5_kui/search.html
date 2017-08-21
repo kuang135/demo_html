@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+		.k-search {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #dfe0e4;
+        }
+        .k-search input {
+            float: left;
+            height: 30px;
+            padding: 0 10px;
+            border: 0;
+            outline: none;
+        }
+        .k-search span {
+            float: left;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-left: 1px solid #dfe0e4;
+            cursor: pointer;
+            background: url("img/search.png") no-repeat center;
+        }
+        .k-search::after {
+            clear: both;
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+    <div class="k-search"><input type="text" placeholder="名称"><span></span></div>
+    <div>a</div>
+    <div>b</div>
+</body>
+</html>
