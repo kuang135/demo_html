@@ -21,12 +21,12 @@
 			function upload() {
                 document.querySelector('#upload-form').submit();
 				var iframe = document.querySelector('#upload-iframe');
-				console.log(iframe);
 				var timer = setInterval(function() {
 						var res;
 						try {
 							res = iframe.contentDocument.querySelector('body').innerText;
 						} catch(e) {
+						    console.log(e);
 							clearInterval(timer);
 						}
 						if(!!res){
@@ -34,11 +34,11 @@
                             iframe.contentDocument.querySelector('body').innerHTML = '';
 							try {
 								res = JSON.parse(res);
-								console.log('json', res);
 							} catch(e){
 								res = {};
 							}
-						}
+							console.log('json', res);
+                        }
 					}, 30);
                 document.querySelector('#file').value = '';
 			}
