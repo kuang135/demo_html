@@ -81,7 +81,7 @@
       i,
       len,
       div;
-  for (i = 0, len = divs.length; i < len; i++) {
+  for (i = 0, len = divs.length; i < len; i++) { //for (i = 0; i < divs.length; i++) 死循环
       div = document.createElement('div');
       document.body.appendChild(div);
   }
