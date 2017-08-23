@@ -48,6 +48,13 @@
      - toggle(value): 如果存在，删除；如果不存在，添加
 2. 焦点管理
 3. HTMLDocument的变化
+   + 为元素添加非标准属性，用data-前缀
+   + 自义定属性可以通过dataset属性来访问，dataset是DOMStringMap的一个实例
+   ```
+   <div id="myDiv" data-appId="12345"></div>
+   var div = document.querySelector('#myDiv');
+   var appId = div.dataset.appid; //小写
+   ```
 4. 字符集属性
 5. 自定义数据属性
 6. 插入标记

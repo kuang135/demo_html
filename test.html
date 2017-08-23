@@ -3,41 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
 </head>
 <body>
+
+<div id="myDiv" data-appId="12345" data-myName="Nicholas">按钮</div>
     <script>
-        function loadStyle(url) {
-            var link = document.createElement('link');
-            link.rel = 'stylesheet';
-//            link.type = 'text/css';
-            link.href = url;
-            document.getElementsByTagName('head')[0].appendChild(link);
-        }
-        loadStyle('https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css');
-        function loadScript(url) {
-            var script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.src = url;
-            document.body.insertBefore(script, document.body.firstChild);
-            console.log(url);
-        }
-        loadScript('https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js');
-        setTimeout(function () {
-            console.log($);
-        }, 1000);
-        function loadStyleString(css) {
-            var style = document.createElement('style');
-            style.type = 'text/css';
-            try {
-                style.appendChild(document.createTextNode(css));
-            } catch (e) {
-                style.styleSheet.cssText = css;
-            }
-            document.getElementsByTagName('head')[0].appendChild(style);
-        }
-        loadStyleString('body {background-color: pink;}');
+        var div = document.querySelector('#myDiv');
+        var appId = div.dataset.appid;
+        console.log(appId);
+        console.log(div.dataset);
     </script>
-    <div class="btn btn-default">按钮</div>
 </body>
 </html>
