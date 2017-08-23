@@ -58,4 +58,7 @@
 4. 字符集属性
 5. 自定义数据属性
 6. 插入标记
+   + innerHTML属性
+   + outerHTML属性
+   + innerAdjacentHTML()方法
 7. scrollIntoView()方法
