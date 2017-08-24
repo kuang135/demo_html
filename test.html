@@ -6,8 +6,8 @@
         <style>
             * {margin: 0; padding: 0;}
             body {padding: 20px;}
-            .wrap {position: relative;margin: 20px; padding: 20px; width: 400px; height: 200px; border: 1px solid #ccc;}
-            .btn {display: inline-block; margin: 20px; height: 30px; width: 50px; padding: 5px 10px; line-height: 30px; text-align: center;border: 1px solid #ccc;}
+            .wrap {position: relative;margin: 20px; padding: 20px; width: 400px; height: 200px; border: 1px solid #ccc; overflow-y: auto;}
+            .btn {display: inline-block; margin: 20px; height: 500px; width: 50px; padding: 5px 10px; line-height: 30px; text-align: center;border: 1px solid #ccc;}
         </style>
     </head>
 <body>
@@ -15,12 +15,27 @@
         <div class="btn">按钮</div>
     </div>
     <script>
-        var btn = document.querySelector('.btn');
-        console.log(btn.offsetParent);
-        console.log('高度：', btn.offsetHeight);
-        console.log('宽度：', btn.offsetWidth);
-        console.log('左边框至包含元素的左内边框的像素距离', btn.offsetLeft);
-        console.log('上边框至包含元素的上外边框的像素距离', btn.offsetTop);
+        var wrap = document.querySelector('.wrap');
+        console.log(wrap.offsetParent);
+        console.log('宽度：', wrap.offsetWidth);
+        console.log('高度：', wrap.offsetHeight);
+        console.log('宽度：', wrap.scrollWidth);
+        console.log('高度：', wrap.scrollHeight);
+        function getDoc() {
+            if (document.compatMode === 'BackCompat') {
+                return {
+                    width: Math.max(document.body.clientWidth, document.body.scrollWidth),
+                    height: Math.max(document.body.clientHeight, document.body.scrollHeight)
+                }
+            } else {
+                return {
+                    width: Math.max(document.documentElement.clientWidth, document.documentElement.scrollWidth),
+                    height: Math.max(document.documentElement.clientHeight, document.documentElement.scrollHeight)
+                }
+            }
+
+        }
+        console.log(getDoc());
     </script>
 </body>
 </html>
