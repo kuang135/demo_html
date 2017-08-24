@@ -4,42 +4,23 @@
         <meta charset="UTF-8">
         <title>Title</title>
         <style>
-            #myDiv::after {content: ""; display: block; width: 0; height: 0; clear: both; visibility: hidden;}
-            #myDiv .btn {float: left; padding: 5px 10px; border: 1px solid #ccc;}
+            * {margin: 0; padding: 0;}
+            body {padding: 20px;}
+            .wrap {position: relative;margin: 20px; padding: 20px; width: 400px; height: 200px; border: 1px solid #ccc;}
+            .btn {display: inline-block; margin: 20px; height: 30px; width: 50px; padding: 5px 10px; line-height: 30px; text-align: center;border: 1px solid #ccc;}
         </style>
     </head>
 <body>
-    <div id="myDiv">
-        <div class="btn" style="background-color: pink;">
-            按钮
-        </div>
+    <div class="wrap">
+        <div class="btn">按钮</div>
     </div>
     <script>
-        var btn = document.querySelector('#myDiv .btn');
-
-        console.log('background-color: ', btn.style.backgroundColor);//background-color:  pink
-        console.log('border: ', btn.style.border);//border:
-        console.log('getPropertyValue("background-color"): ', btn.style.getPropertyValue('background-color'));
-        console.log('getPropertyValue("border"): ', btn.style.getPropertyValue('border'));
-        console.log('getPropertyPriority("background-color"): ', btn.style.getPropertyPriority('background-color'));
-        console.log('item(index): ', btn.style.item(0), btn.style[0]);
-        console.log('cssText: ', btn.style.cssText);
-        console.log('length: ', btn.style.length);
-        console.log('parentRule: ', btn.style.parentRule);
-        btn.style.removeProperty('background-color');
-        btn.style.setProperty('background-color', 'yellowGreen');
-
-        console.log('');
-        var computedStyle = btn.currentStyle || document.defaultView.getComputedStyle(btn, null);
-        console.log('background-color: ', computedStyle.backgroundColor);
-        console.log('border: ', computedStyle.border);
-        console.log('getPropertyValue("background-color"): ', computedStyle.getPropertyValue('background-color'));
-        console.log('getPropertyValue("border"): ', computedStyle.getPropertyValue('border'));
-        console.log('getPropertyPriority("background-color"): ', computedStyle.getPropertyPriority('background-color'));
-        console.log('cssText: ', computedStyle.cssText);
-        console.log('length: ', computedStyle.length);
-        console.log('item(index): ', computedStyle.item(0), computedStyle[0]);
-        console.log('parentRule: ', computedStyle.parentRule);
+        var btn = document.querySelector('.btn');
+        console.log(btn.offsetParent);
+        console.log('高度：', btn.offsetHeight);
+        console.log('宽度：', btn.offsetWidth);
+        console.log('左边框至包含元素的左内边框的像素距离', btn.offsetLeft);
+        console.log('上边框至包含元素的上外边框的像素距离', btn.offsetTop);
     </script>
 </body>
 </html>
