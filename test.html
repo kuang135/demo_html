@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            #myDiv::after {content: ""; display: block; width: 0; height: 0; clear: both; visibility: hidden;}
+            #myDiv .btn {float: left; padding: 5px 10px; border: 1px solid #ccc;}
+        </style>
+    </head>
 <body>
-
-<div id="myDiv" data-appId="12345" data-myName="Nicholas">按钮</div>
+    <div id="myDiv">
+        <div class="btn" style="background-color: pink;">
+            按钮
+        </div>
+    </div>
     <script>
-        var div = document.querySelector('#myDiv');
-        var appId = div.dataset.appid;
-        console.log(appId);
-        console.log(div.dataset);
+        var btn = document.querySelector('#myDiv .btn');
+        console.log(btn.style.backgroundColor);//'pink'
+        console.log(btn.style.border);//''
     </script>
 </body>
 </html>
