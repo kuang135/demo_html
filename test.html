@@ -16,8 +16,30 @@
     </div>
     <script>
         var btn = document.querySelector('#myDiv .btn');
-        console.log(btn.style.backgroundColor);//'pink'
-        console.log(btn.style.border);//''
+
+        console.log('background-color: ', btn.style.backgroundColor);//background-color:  pink
+        console.log('border: ', btn.style.border);//border:
+        console.log('getPropertyValue("background-color"): ', btn.style.getPropertyValue('background-color'));
+        console.log('getPropertyValue("border"): ', btn.style.getPropertyValue('border'));
+        console.log('getPropertyPriority("background-color"): ', btn.style.getPropertyPriority('background-color'));
+        console.log('item(index): ', btn.style.item(0), btn.style[0]);
+        console.log('cssText: ', btn.style.cssText);
+        console.log('length: ', btn.style.length);
+        console.log('parentRule: ', btn.style.parentRule);
+        btn.style.removeProperty('background-color');
+        btn.style.setProperty('background-color', 'yellowGreen');
+
+        console.log('');
+        var computedStyle = btn.currentStyle || document.defaultView.getComputedStyle(btn, null);
+        console.log('background-color: ', computedStyle.backgroundColor);
+        console.log('border: ', computedStyle.border);
+        console.log('getPropertyValue("background-color"): ', computedStyle.getPropertyValue('background-color'));
+        console.log('getPropertyValue("border"): ', computedStyle.getPropertyValue('border'));
+        console.log('getPropertyPriority("background-color"): ', computedStyle.getPropertyPriority('background-color'));
+        console.log('cssText: ', computedStyle.cssText);
+        console.log('length: ', computedStyle.length);
+        console.log('item(index): ', computedStyle.item(0), computedStyle[0]);
+        console.log('parentRule: ', computedStyle.parentRule);
     </script>
 </body>
 </html>
