@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>jsonp测试</h1>
+<div id="btn" onclick="doClick();" style="display: inline-block; padding: 5px 10px;border: 1px solid #ddd; cursor: pointer;">获取数据</div>
+    <script>
+        var JSONP = function (obj) {
+            if (!obj || !obj.url) throw new Error('------- object must have url property -------');
+            function _getParam(data) {
+                var arr = [];
+                for (var key in data) {
+                    arr.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]));
+                }
+                return arr.join('&');
+            }
+            function _getCallback() {
+                var arr = [];
+                for (var i = 0; i < 8; i++) {
+                    arr[i] = '0123456789abcdefghijklmnopqrstuvwxyz'[Math.floor(Math.random()*36)];
+                }
+                return '_jsonp' + arr.join('');
+            }
+            var _callback = obj.callback || _getCallback();
+            obj.data = obj.data || {};
+            obj.data.callback = _callback;
+            obj.data._ = new Date().valueOf();
+            var _param = _getParam(obj.data),
+                _success = obj.success || function(data) {console.log(data);},
+                _url = obj.url + '?' + _param,
+                script = document.createElement('script');
+            window[_callback] = function(data) {
+                _success(data);
+                document.body.removeChild(script);
+                delete window[_callback];
+            };
+            script.type = 'text/javascript';
+            script.src = _url;
+            document.body.insertBefore(script, document.body.firstChild);
+        };
+        function doClick() {
+            JSONP({
+                url: 'http://www.jktong.com/app/interface/APP_DetectionDaily.jsp',
+                data: {id: 'E1255CC785AD4062A77DBC016DD98997'},
+                success: function (data) {
+                    console.log('success', data);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
