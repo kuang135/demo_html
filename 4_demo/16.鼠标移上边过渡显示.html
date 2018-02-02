@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        .btn {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            background-color: #eee;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .edge {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 0;
+            background-color: #333;
+            transition: all .3s;
+        }
+        .btn:hover .edge.top {
+            width: 100%;
+            height: 2px;
+        }
+        .btn:hover .edge.left {
+            width: 2px;
+            height: 100%;
+        }
+
+        .after:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            background-color: #333;
+            transition: all .3s;
+        }
+        .after.top:hover:after {
+            width: 100%;
+            height: 2px;
+        }
+        .after.left:hover:after {
+            width: 2px;
+            height: 100%;
+        }
+
+    </style>
+</head>
+<body>
+<div style="padding: 20px;">
+    <div class="btn">点我<span class="edge top"></span></div>
+    <div class="btn">电我<span class="edge left"></span></div>
+</div>
+<div style="padding: 20px;">
+    <div class="btn after top">点我</div>
+    <div class="btn after left">电我</div>
+</div>
+
+</body>
+</html>
